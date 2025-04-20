@@ -1,0 +1,12 @@
+<!-- Property Binding -->
+<h2 [innerText]="title"></h2>
+<hr>
+<!-- Property Binding 2 -->
+<p [className]="ornekClass"> [className] Örneği=> Lorem ipsum dolor sit amet.</p>
+<hr>
+<!-- Two-Way Data Binding -->
+<input [(ngModel)]="name" placeholder="Adınızı yazın" />
+
+<!-- Event Binding -->
+<button (click)="showMessage()" [disabled]="!name">Selamla</button>
+<p *ngIf="message">{{ message }}</p>
