@@ -4,14 +4,23 @@ import {BindingComponent} from './ng-topics/1-Binding/binding/binding.component'
 import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.component";
 import {LoopsComponent} from "./ng-topics/2-Loops/loops/loops.component";
 import {LoginComponent} from "./ng-topics/login/login.component";
+import {LayoutComponent} from "./ng-topics/layout/layout.component";
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },  // Boş path login'e yönlendiriliyor
-  { path: 'login', component: LoginComponent },
-  {path: 'binding', component: BindingComponent},
-  {path: 'todo', component: TodoAppComponent},
-  {path: 'loops', component: LoopsComponent},
+  { path: '', component: LoginComponent },
+  {
+    path: 'layout',
+    component: LayoutComponent,
+    children: [
+      { path: '', redirectTo: 'binding', pathMatch: 'full' },
+      { path: 'binding', component: BindingComponent },
+      { path: 'todo', component: TodoAppComponent },
+      { path: 'loops', component: LoopsComponent },
+    ]
+  },
+  { path: '**', redirectTo: '/login' }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],  // RouterModule.forRoot() ile yönlendirme işlemleri tanımlanır

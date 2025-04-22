@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from "@angular/router";
 
 @Component({
@@ -13,9 +13,8 @@ export class LoginComponent {
   constructor(private router: Router) {}
 
   onSubmit(): void {
-    // Burada gerçek uygulamada kullanıcı doğrulama işlemleri yapılabilir
     if (this.username && this.password) {
-      this.router.navigateByUrl('/binding');
+      this.router.navigateByUrl('/layout');
     } else {
       alert('Kullanıcı adı ve parola zorunldur.');
     }

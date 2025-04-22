@@ -9,6 +9,7 @@ import {FormsModule} from '@angular/forms';
 import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.component";
 import {LoopsComponent} from "./ng-topics/2-Loops/loops/loops.component";
 import {LoginComponent} from "./ng-topics/login/login.component";
+import {LayoutComponent} from "./ng-topics/layout/layout.component";
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import {LoginComponent} from "./ng-topics/login/login.component";
     TodoAppComponent,
     LoopsComponent,
     LoginComponent,
+    LayoutComponent,
   ],
   imports: [
     BrowserModule,

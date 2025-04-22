@@ -8,9 +8,4 @@ import {Router} from "@angular/router";
 })
 export class AppComponent {
   title = 'ng-docs-app';
-  constructor(public router: Router) {}
-
-  isLoginPage(): boolean {
-    return this.router.url === '/login';
-  }
 }
