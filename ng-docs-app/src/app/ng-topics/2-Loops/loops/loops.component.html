@@ -1,0 +1,60 @@
+<div class="container">
+  <h2>Kullanıcı Listesi</h2>
+
+  <!-- Kullanıcı Ekle -->
+  <div class="form-row">
+    <input [(ngModel)]="newUser.name" placeholder="İsim" />
+    <input [(ngModel)]="newUser.age" type="number" placeholder="Yaş" />
+    <input [(ngModel)]="newUser.city" placeholder="Şehir" />
+    <button (click)="addUser()">Ekle</button>
+  </div>
+
+  <!-- Tablo -->
+  <table>
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>İsim</th>
+      <th>Yaş</th>
+      <th>Şehir</th>
+      <th>İşlem</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of userList">
+      <td>{{ user.id }}</td>
+      <td>{{ user.name }}</td>
+      <td>{{ user.age }}</td>
+      <td>{{ user.city }}</td>
+      <td>
+        <button (click)="selectUser(user)">Seç</button>
+        <button (click)="deleteUser(user.id)">Sil</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <!-- Detay Paneli -->
+  <div class="details" *ngIf="selectedUser">
+    <span class="close-btn" (click)="closeDetails()">×</span>
+
+    <div *ngIf="!isEditing">
+      <h3>Detay</h3>
+      <p><strong>ID:</strong> {{ selectedUser.id }}</p>
+      <p><strong>İsim:</strong> {{ selectedUser.name }}</p>
+      <p><strong>Yaş:</strong> {{ selectedUser.age }}</p>
+      <p><strong>Şehir:</strong> {{ selectedUser.city }}</p>
+      <button (click)="startEdit()">Düzenle</button>
+    </div>
+
+
+    <!-- Detay Panelinde Düzenle tıklarsak basit bir form açıyoruz -->
+    <div *ngIf="isEditing">
+      <h3>Düzenle</h3>
+      <input [(ngModel)]="selectedUser.name" />
+      <input [(ngModel)]="selectedUser.age" type="number" />
+      <input [(ngModel)]="selectedUser.city" />
+      <button (click)="saveEdit()">Kaydet</button>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app.routing.module';  // AppRoutingModule im
 import { NavComponent } from './ng-topics/nav/nav.component';
 import { FormsModule } from '@angular/forms';
 import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.component";
+import {LoopsComponent} from "./ng-topics/2-Loops/loops/loops.component";
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.componen
     BindingComponent,
     NavComponent,
     TodoAppComponent,
+    LoopsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,46 @@
+.container {
+  text-align: center;
+  font-family: Arial, sans-serif;
+}
+
+table {
+  margin: 20px auto;
+  border-collapse: collapse;
+  width: 80%;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+.form-row {
+  margin-bottom: 20px;
+}
+
+.form-row input {
+  margin: 0 5px;
+  padding: 6px;
+}
+
+.details {
+  margin: 20px auto;
+  width: 300px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  position: relative;
+  background-color: #fafafa;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #888;
+}

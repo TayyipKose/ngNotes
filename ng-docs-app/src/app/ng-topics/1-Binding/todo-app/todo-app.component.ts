@@ -18,7 +18,7 @@ export class TodoAppComponent {
   }
 
   itemStatus(task: any) {
-    task.done = !task.done;
+    task.done = true;
   }
 
   editTask(task: any) {
