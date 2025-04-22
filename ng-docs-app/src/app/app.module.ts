@@ -6,12 +6,14 @@ import { BindingComponent } from './ng-topics/1-Binding/binding/binding.componen
 import { AppRoutingModule } from './app.routing.module';  // AppRoutingModule import ediliyor
 import { NavComponent } from './ng-topics/nav/nav.component';
 import { FormsModule } from '@angular/forms';
+import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     BindingComponent,
     NavComponent,
+    TodoAppComponent,
   ],
   imports: [
     BrowserModule,

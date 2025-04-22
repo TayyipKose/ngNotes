@@ -1,0 +1,25 @@
+<div class="todo-container">
+  <h2>Yapılacaklar Listesi</h2>
+
+  <div class="input-group">
+    <input type="text" [(ngModel)]="newTask" placeholder="Yeni görev ekle...">
+    <button
+      [disabled]="!newTask"
+      (click)="editingTask ? updateTask() : addTask(newTask)">
+      {{ editingTask ? 'Güncelle' : 'Ekle' }}
+    </button>
+  </div>
+
+  <ul class="todo-list">
+    <li *ngFor="let task of taskList" [class.done]="task.done" class="todo-item">
+      <span class="task-name" (click)="itemStatus(task)">
+        {{ task.name }}
+      </span>
+      <div class="task-actions">
+        <button (click)="editTask(task)" title="Düzenle">✏️</button>
+        <button (click)="deleteTask(task)" title="Sil">🗑️</button>
+        <button (click)="itemStatus(task)" title="Tamamlandı">✅</button>
+      </div>
+    </li>
+  </ul>
+</div>
