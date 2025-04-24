@@ -1,0 +1,58 @@
+<div class="container">
+  <h1>Angular Directive Örnekleri</h1>
+
+  <!-- Mevcut Örnekler -->
+  <div class="example-box">
+    <h2>1. Number Formatter Directive</h2>
+    <p>Bu alana sadece sayı girebilirsiniz ve blur olduğunda otomatik olarak 2 ondalık basamağa formatlanır.</p>
+    <div class="input-group">
+      <label for="price">Fiyat:</label>
+      <input
+        id="price"
+        type="text"
+        placeholder="Sayıyı Giriniz"
+        appNumberFormatter
+        class="form-input"
+      >
+    </div>
+  </div>
+
+  <hr>
+
+  <div class="example-box">
+    <h2>2. Disable Copy-Paste Directive</h2>
+    <p>Bu alanda kopyala-yapıştır ve sağ tık işlevleri devre dışı bırakılmıştır.</p>
+    <div class="input-group">
+      <label for="secure">Güvenli Giriş:</label>
+      <input
+        id="secure"
+        type="text"
+        placeholder="Buraya elle yazın"
+        appDisableCopyPaste
+        class="form-input"
+      >
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- Yeni ngClass Örneği -->
+  <div class="example-box">
+    <h2>3. ngClass ile Dinamik Stil</h2>
+    <p>Input alanına bir şeyler yazdığınızda arka plan rengi değişir.</p>
+    <div class="input-group">
+      <label for="dynamic">Dinamik Input:</label>
+      <input
+        id="dynamic"
+        type="text"
+        placeholder="Bir şeyler yazın"
+        [(ngModel)]="inputValue"
+        [ngClass]="{
+          'valid-input': inputValue && inputValue.length > 0,
+          'invalid-input': !inputValue || inputValue.length === 0
+        }"
+        class="form-input"
+      >
+    </div>
+  </div>
+</div>
