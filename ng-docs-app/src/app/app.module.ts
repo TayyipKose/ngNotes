@@ -17,7 +17,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Service/service';
 import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
-
+import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 @NgModule({
   declarations: [
     //Components
@@ -32,6 +32,7 @@ import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
     ProductListComponent,
     ProductDetailComponent,
     PipeComponent,
+    GuardComponent,
 
 
     //Directives
@@ -39,7 +40,7 @@ import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
     DisableCopyPasteDirective,
 
     //Pipes
-    YasHesaplamaPipe
+    YasHesaplamaPipe,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +51,7 @@ import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
   ],
   exports: [
     NumberFormatterDirective,
-    DisableCopyPasteDirective
+    DisableCopyPasteDirective,
   ],
   providers: [],
   bootstrap: [AppComponent]

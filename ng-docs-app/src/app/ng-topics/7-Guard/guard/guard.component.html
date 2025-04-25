@@ -1,0 +1,55 @@
+<div style="padding: 20px; max-width: 800px; margin: auto; font-family: Arial, sans-serif; line-height: 1.6; background-color: #f9f9f9; border-radius: 8px;">
+  <h1 style="color: #2c3e50;">Angular AuthGuard</h1>
+  <p><strong>AuthGuard</strong>, korumalı rotalara erişmeden önce kullanıcının giriş yapıp yapmadığını kontrol eder. Giriş yapılmamışsa kullanıcıyı <strong>/login</strong> sayfasına yönlendirir.</p>
+
+  <h2 style="color: #2980b9;">Ne İşe Yarar?</h2>
+  <ul>
+    <li><strong>Giriş yaptıysa:</strong> <code>/layout</code> ve alt sayfalara erişebilir.</li>
+    <li><strong>Giriş yapmadıysa:</strong> Her denemede otomatik olarak <code>/login</code> sayfasına yönlendirilir.</li>
+  </ul>
+
+  <h2 style="color: #2980b9;">Kullanım Senaryosu</h2>
+  <p><strong>Demo Giriş Bilgisi:</strong> admin / 123</p>
+  <p>
+    Doğru giriş yapılırsa → <code>localStorage.setItem('isLoggedIn', 'true')</code><br />
+    Sayfa yönlenir → <code>/layout</code> → oradan <code>/layout/binding</code> gibi alt sayfalara erişilebilir.<br />
+    Giriş yapılmazsa → Tüm sayfa erişimleri <code>/login</code>'a yönlenir.
+  </p>
+
+  <h2 style="color: #2980b9;">Uygulama Akışı</h2>
+  <ol>
+    <li><strong>LoginComponent</strong>: Kullanıcı giriş sayfası açılır.</li>
+    <li><strong>Doğru giriş</strong> yapılınca:
+      <ul>
+        <li><code>localStorage.setItem('isLoggedIn', 'true')</code> çalışır.</li>
+        <li>Kullanıcı <code>/layout</code> sayfasına yönlendirilir.</li>
+      </ul>
+    </li>
+    <li><strong>AuthGuard devreye girer</strong>:
+      <ul>
+        <li>Her rota geçişinde <code>localStorage.getItem('isLoggedIn')</code> kontrol edilir.</li>
+        <li>Eğer giriş yoksa otomatik <code>/login</code>'a yönlenir.</li>
+      </ul>
+    </li>
+    <li><strong>Çıkış:</strong> <code>localStorage.removeItem('isLoggedIn')</code> çalıştırılır.</li>
+    <li><strong>Çıkış sonrası:</strong> Kullanıcı artık guard'dan geçemez, tekrar giriş yapması gerekir.</li>
+    <li><strong>Yanlış URL:</strong> Geçersiz veya korumalı rota ise, guard sayesinde yine <code>/login</code>'a döner.</li>
+  </ol>
+
+  <h2 style="color: #2980b9;">AuthGuard Özeti</h2>
+  <ul>
+    <li><strong>canActivate:</strong> Ana sayfa ve genel rota koruması sağlar.</li>
+    <li><strong>canActivateChild:</strong> Alt sayfalara geçişte tekrar kontrol yapılır.</li>
+    <li><strong>canDeactivate:</strong> Sayfadan çıkmadan önce kullanıcıyı uyarır.</li>
+    <li><strong>Kontrol Mekanizması:</strong> <code>localStorage</code> kullanılır. (örnek: <code>isLoggedIn</code>)</li>
+    <li><strong>Yönlendirme:</strong> Giriş yoksa → <code>/login</code>, giriş varsa → rota açılır.</li>
+  </ul>
+
+  <h2 style="color: #2980b9;">Notlar</h2>
+  <ul>
+    <li>Guard her rota geçişinde çalışır, güvenlik açısından önemlidir.</li>
+    <li>Bu örnek basittir; gerçek uygulamalarda <strong>JWT token</strong> gibi güvenli sistemler kullanılır.</li>
+    <li><strong>localStorage</strong>'da şifre veya hassas veri asla saklanmaz (demo içindir).</li>
+    <li><strong>canDeactivate</strong> özelliği, örneğin form sayfalarından çıkmadan önce kullanıcıyı uyarmak için kullanılır.</li>
+  </ul>
+</div>
