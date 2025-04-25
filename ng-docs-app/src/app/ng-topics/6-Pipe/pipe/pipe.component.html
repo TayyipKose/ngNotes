@@ -1,0 +1,18 @@
+<h1>Kullanıcılar</h1>
+
+<table border="1" cellpadding="8" cellspacing="0">
+  <thead>
+  <tr>
+    <th>İsim</th>
+    <th>Doğum Tarihi</th>
+    <th>Yaş</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.birthDate | date: 'shortDate' }}</td> <!-- Doğum tarihini kısa formatta gösterir -->
+    <td>{{ user.birthDate | yasHesaplama }}</td> <!-- Yaşı hesaplama pipeını kullandık -->
+  </tr>
+  </tbody>
+</table>

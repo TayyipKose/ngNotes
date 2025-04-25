@@ -7,6 +7,7 @@ import {LoginComponent} from "./ng-topics/login/login.component";
 import {LayoutComponent} from "./ng-topics/layout/layout.component";
 import {DirectiveComponent} from "./ng-topics/4-Directive/directive/directive.component";
 import {ProductDetailComponent, ProductListComponent} from "./ng-topics/5-Service/service";
+import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -21,6 +22,8 @@ const routes: Routes = [
       {path: 'directive', component: DirectiveComponent},
       { path: 'service', component: ProductListComponent },
       { path: 'service/product/:id', component: ProductDetailComponent },
+      { path: 'pipe', component: PipeComponent },
+
     ]
   },
   {path: '**', redirectTo: '/login'}

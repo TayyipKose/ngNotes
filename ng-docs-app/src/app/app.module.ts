@@ -15,6 +15,8 @@ import {NumberFormatterDirective} from "./ng-topics/4-Directive/directive/direct
 import {DisableCopyPasteDirective} from "./ng-topics/4-Directive/directive/directive-list/disable-copy-paste.directive";
 import {HttpClientModule} from "@angular/common/http";
 import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Service/service';
+import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
+import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
 
 @NgModule({
   declarations: [
@@ -29,10 +31,15 @@ import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Servi
     DirectiveComponent,
     ProductListComponent,
     ProductDetailComponent,
+    PipeComponent,
+
 
     //Directives
     NumberFormatterDirective,
     DisableCopyPasteDirective,
+
+    //Pipes
+    YasHesaplamaPipe
   ],
   imports: [
     BrowserModule,
