@@ -10,9 +10,15 @@ import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.componen
 import {LoopsComponent} from "./ng-topics/2-Loops/loops/loops.component";
 import {LoginComponent} from "./ng-topics/login/login.component";
 import {LayoutComponent} from "./ng-topics/layout/layout.component";
+import {DirectiveComponent} from "./ng-topics/4-Directive/directive/directive.component";
+import {NumberFormatterDirective} from "./ng-topics/4-Directive/directive/directive-list/number-formatter.directive";
+import {DisableCopyPasteDirective} from "./ng-topics/4-Directive/directive/directive-list/disable-copy-paste.directive";
+import {HttpClientModule} from "@angular/common/http";
+import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Service/service';
 
 @NgModule({
   declarations: [
+    //Components
     AppComponent,
     BindingComponent,
     NavComponent,
@@ -20,12 +26,24 @@ import {LayoutComponent} from "./ng-topics/layout/layout.component";
     LoopsComponent,
     LoginComponent,
     LayoutComponent,
+    DirectiveComponent,
+    ProductListComponent,
+    ProductDetailComponent,
+
+    //Directives
+    NumberFormatterDirective,
+    DisableCopyPasteDirective,
   ],
   imports: [
     BrowserModule,
     RouterModule,  // RouterModule burada import ediliyor
     AppRoutingModule,  // AppRoutingModule burada import ediliyor
     FormsModule,
+    HttpClientModule,
+  ],
+  exports: [
+    NumberFormatterDirective,
+    DisableCopyPasteDirective
   ],
   providers: [],
   bootstrap: [AppComponent]

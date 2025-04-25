@@ -10,13 +10,14 @@ export class LoginComponent {
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+  }
 
   onSubmit(): void {
-    if (this.username && this.password) {
+    if (this.username === 'admin' && this.password === '123') {
       this.router.navigateByUrl('/layout');
     } else {
-      alert('Kullanıcı adı ve parola zorunldur.');
+      alert('Kullanıcı adı ve parola hatalı!');
     }
   }
 }
