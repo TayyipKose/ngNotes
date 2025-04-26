@@ -34,7 +34,8 @@
 }
 
 .navbar .nav-links li a:hover {
-  color: #ff6347;  /* Hover efekti */
+  color: black;
+  background-color: white;
 }
 .logo{
   cursor: pointer;
