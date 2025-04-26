@@ -12,6 +12,8 @@ import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 import {AuthGuard} from './ng-topics/7-Guard/auth.guard';
 import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
 import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
+import {ApiRequestComponent} from "./ng-topics/10-ApiRequests/api.component";
+import {FormComponent} from "./ng-topics/11-Form/form/form.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},  // login URL'sine LoginComponent ile eşleştiriyoruz
@@ -33,8 +35,8 @@ const routes: Routes = [
       {path: 'guard', component: GuardComponent},
       {path: 'ınput&output', component: ParentComponent},
       {path: 'localStore', component: LocalstorageComponent},
-
-
+      {path: 'api', component: ApiRequestComponent},
+      {path: 'form', component: FormComponent},
     ]
   },
 

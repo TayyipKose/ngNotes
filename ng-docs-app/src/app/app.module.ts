@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {BindingComponent} from './ng-topics/1-Binding/binding/binding.component';
 import {AppRoutingModule} from './app.routing.module';  // AppRoutingModule import ediliyor
 import {NavComponent} from './ng-topics/nav/nav.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {TodoAppComponent} from "./ng-topics/1-Binding/todo-app/todo-app.component";
 import {LoopsComponent} from "./ng-topics/2-Loops/loops/loops.component";
 import {LoginComponent} from "./ng-topics/login/login.component";
@@ -21,6 +21,8 @@ import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
 import {ChildComponent} from "./ng-topics/8-Input&Output/child/child.component";
 import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
+import {ApiRequestComponent} from "./ng-topics/10-ApiRequests/api.component";
+import {FormComponent} from "./ng-topics/11-Form/form/form.component";
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
     ParentComponent,
     ChildComponent,
     LocalstorageComponent,
+    ApiRequestComponent,
+    FormComponent,
 
 
     //Directives
@@ -55,6 +59,7 @@ import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
     AppRoutingModule,  // AppRoutingModule burada import ediliyor
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
   exports: [
     NumberFormatterDirective,
