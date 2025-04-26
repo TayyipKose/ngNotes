@@ -1,0 +1,27 @@
+<h2>Ürün Listesi</h2>
+
+<!-- Parenttan, Child'a ürün listesini gönderiyoruz -->
+<app-child
+  [products]="products"
+  (productSelected)="onProductSelected($event)">
+  <!-- products]="products"=> ile  Input binding ile ürünler Child'a aktarılır -->
+  <!-- (productSelected)="onProductSelected($event)"=> ile Output event ile seçilen ürün parent'a gönderilir -->
+</app-child>
+
+<hr>
+
+<!-- Seçilen ürün bilgisi burada görüntüleniyor -->
+<h3 *ngIf="selectedProduct">
+  Seçilen Ürün:
+  <strong>{{ selectedProduct.name }}</strong>
+  - Fiyat: <strong>{{ selectedProduct.price }} TL</strong>
+</h3>
+
+<h3 *ngIf="!selectedProduct">Henüz bir ürün seçmediniz.</h3>
+<!-- Akışın Kısa Mantıgı
+Parent Component'teki products listesi, Input binding ile Child Component'e aktarılır.
+Child, her ürüne tıklandığında Output kullanarak seçilen ürünü Parent'a gönderir.
+Parent, bu veriyi onProductSelected() metodu ile alır ve ekranda gösterir.
+Eğer ürün seçilmemişse, "Henüz bir ürün seçmediniz" mesajı görünür.
+Özet: Input veri göndermek, Output ise veri almak için kullanılır.
+-->

@@ -18,6 +18,8 @@ import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Servi
 import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
 import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
+import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
+import {ChildComponent} from "./ng-topics/8-Input&Output/child/child.component";
 @NgModule({
   declarations: [
     //Components
@@ -33,7 +35,8 @@ import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
     ProductDetailComponent,
     PipeComponent,
     GuardComponent,
-
+    ParentComponent,
+    ChildComponent,
 
     //Directives
     NumberFormatterDirective,

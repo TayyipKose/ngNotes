@@ -1,0 +1,8 @@
+<div *ngFor="let product of products" style="display: inline-block; margin-right: 10px;">
+  <button
+    (click)="onProductClick(product)"
+    style="cursor: pointer;"
+  >
+    {{ product.name }}
+  </button>
+</div>

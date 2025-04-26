@@ -10,6 +10,7 @@ import {ProductDetailComponent, ProductListComponent} from "./ng-topics/5-Servic
 import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 import {AuthGuard} from './ng-topics/7-Guard/auth.guard';
+import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},  // login URL'sine LoginComponent ile eşleştiriyoruz
@@ -29,6 +30,8 @@ const routes: Routes = [
       {path: 'service/product/:id', component: ProductDetailComponent},
       {path: 'pipe', component: PipeComponent},
       {path: 'guard', component: GuardComponent},
+      {path: 'ınput&output', component: ParentComponent},
+
     ]
   },
 
