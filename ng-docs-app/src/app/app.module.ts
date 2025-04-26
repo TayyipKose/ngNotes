@@ -20,6 +20,8 @@ import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
 import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
 import {ChildComponent} from "./ng-topics/8-Input&Output/child/child.component";
+import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
+
 @NgModule({
   declarations: [
     //Components
@@ -37,6 +39,8 @@ import {ChildComponent} from "./ng-topics/8-Input&Output/child/child.component";
     GuardComponent,
     ParentComponent,
     ChildComponent,
+    LocalstorageComponent,
+
 
     //Directives
     NumberFormatterDirective,

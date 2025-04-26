@@ -11,6 +11,7 @@ import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
 import {AuthGuard} from './ng-topics/7-Guard/auth.guard';
 import {ParentComponent} from "./ng-topics/8-Input&Output/parent/parent.component";
+import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},  // login URL'sine LoginComponent ile eşleştiriyoruz
@@ -31,6 +32,8 @@ const routes: Routes = [
       {path: 'pipe', component: PipeComponent},
       {path: 'guard', component: GuardComponent},
       {path: 'ınput&output', component: ParentComponent},
+      {path: 'localStore', component: LocalstorageComponent},
+
 
     ]
   },
