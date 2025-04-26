@@ -12,6 +12,6 @@ export class ChildComponent {
   @Output() productSelected = new EventEmitter<string>(); // Parent'a seçilen ürünü göndereceğiz
 
   onProductClick(product: string) {
-    this.productSelected.emit(product); // Seçilen ürünü parent'a fırlatıyoruz
+    this.productSelected.emit(product);
   }
 }
