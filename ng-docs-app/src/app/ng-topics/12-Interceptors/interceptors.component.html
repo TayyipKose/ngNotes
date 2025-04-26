@@ -1,0 +1,18 @@
+<p>{{ interceptor }}</p>
+<p>{{ notes }}</p>
+<br>
+<hr>
+
+<p><strong><i>Kendi oluşturduğum "AuthInterceptor" Ne Yapar?</i></strong></p>
+<ul>
+  <li>Her HTTP isteğini yakalar.</li>
+  <li>İsteğe kullanıcı token'ını ekler (Authorization Header).</li>
+  <li>HttpRequest nesnesi değiştirilemez olduğu için, clone() ile kopyalanır ve üzerine token eklenir.</li>
+  <li>Yeni düzenlenen istek sunucuya gönderilir.</li>
+</ul>
+
+<p><strong>Eklenen Header Örneği:</strong></p>
+<pre>
+Authorization: Bearer FakeToken123
+</pre>
+<p>Şuan zaten aktif olarak çalışıyor!</p>

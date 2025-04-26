@@ -13,8 +13,8 @@ import {LayoutComponent} from "./ng-topics/layout/layout.component";
 import {DirectiveComponent} from "./ng-topics/4-Directive/directive/directive.component";
 import {NumberFormatterDirective} from "./ng-topics/4-Directive/directive/directive-list/number-formatter.directive";
 import {DisableCopyPasteDirective} from "./ng-topics/4-Directive/directive/directive-list/disable-copy-paste.directive";
-import {HttpClientModule} from "@angular/common/http";
-import {ProductDetailComponent, ProductListComponent } from './ng-topics/5-Service/service';
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {ProductDetailComponent, ProductListComponent} from './ng-topics/5-Service/service';
 import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
 import {GuardComponent} from "./ng-topics/7-Guard/guard/guard.component";
@@ -23,6 +23,8 @@ import {ChildComponent} from "./ng-topics/8-Input&Output/child/child.component";
 import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
 import {ApiRequestComponent} from "./ng-topics/10-ApiRequests/api.component";
 import {FormComponent} from "./ng-topics/11-Form/form/form.component";
+import {InterceptorsComponent} from "./ng-topics/12-Interceptors/interceptors.component";
+import {AuthInterceptor} from "./ng-topics/12-Interceptors/AuthInterceptor";
 
 @NgModule({
   declarations: [
@@ -44,7 +46,7 @@ import {FormComponent} from "./ng-topics/11-Form/form/form.component";
     LocalstorageComponent,
     ApiRequestComponent,
     FormComponent,
-
+    InterceptorsComponent,
 
     //Directives
     NumberFormatterDirective,
@@ -65,7 +67,9 @@ import {FormComponent} from "./ng-topics/11-Form/form/form.component";
     NumberFormatterDirective,
     DisableCopyPasteDirective,
   ],
-  providers: [],
+  providers: [
+    {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, //interceptorlarımızı buraya ekliyoruz
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
