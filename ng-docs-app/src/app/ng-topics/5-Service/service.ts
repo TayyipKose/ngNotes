@@ -2,12 +2,12 @@ import { Component, Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
+import { environment } from 'src/enviroments/enviroment';
 
 // ProductService: API'den veri çeken servis
 @Injectable({ providedIn: 'root' }) // Uygulama genelinde kullanılabilir
 export class ProductService {
-  private baseUrl = 'https://dummyjson.com/products'; // API'nin ana adresi
-
+  private baseUrl = environment.apiBaseUrl; //enviroment kontrolü, çalışma ortamları için farklı url'ler varsa
   constructor(private http: HttpClient) {} // HttpClient: API istekleri için
 
   // Ürünleri getirir (arama, sıralama ve sayfalama için)
