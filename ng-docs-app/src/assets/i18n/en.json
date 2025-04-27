@@ -1,0 +1,21 @@
+{
+  "HOME": {
+    "WELCOME": "Welcome to the New Module and Home Page!",
+    "NAME_LABEL": "Name",
+    "NAME_ERROR": "Name is required!",
+    "EMAIL_LABEL": "Email",
+    "EMAIL_ERROR": "Valid email is required!",
+    "SUBMIT_BUTTON": "Submit"
+  },
+  "ABOUT": {
+    "TITLE": "About Us",
+    "DESCRIPTION": "This is the About page. You can add your information here.",
+    "BACK_BUTTON": "Back to Home"
+  },
+  "NAVBAR": {
+    "HOME": "Home",
+    "ABOUT": "About",
+    "EXIT": "Exit",
+    "LANGUAGE": "Language"
+  }
+}

@@ -13,7 +13,7 @@ import {LayoutComponent} from "./ng-topics/layout/layout.component";
 import {DirectiveComponent} from "./ng-topics/4-Directive/directive/directive.component";
 import {NumberFormatterDirective} from "./ng-topics/4-Directive/directive/directive-list/number-formatter.directive";
 import {DisableCopyPasteDirective} from "./ng-topics/4-Directive/directive/directive-list/disable-copy-paste.directive";
-import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
 import {ProductDetailComponent, ProductListComponent} from './ng-topics/5-Service/service';
 import {PipeComponent} from "./ng-topics/6-Pipe/pipe/pipe.component";
 import {YasHesaplamaPipe} from "./ng-topics/6-Pipe/yas-hesaplama.pipe";
@@ -25,6 +25,13 @@ import {ApiRequestComponent} from "./ng-topics/10-ApiRequests/api.component";
 import {FormComponent} from "./ng-topics/11-Form/form/form.component";
 import {InterceptorsComponent} from "./ng-topics/12-Interceptors/interceptors.component";
 import {AuthInterceptor} from "./ng-topics/12-Interceptors/AuthInterceptor";
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [
@@ -62,6 +69,13 @@ import {AuthInterceptor} from "./ng-topics/12-Interceptors/AuthInterceptor";
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   exports: [
     NumberFormatterDirective,

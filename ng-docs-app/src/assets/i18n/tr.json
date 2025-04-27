@@ -1,0 +1,22 @@
+{
+  "HOME": {
+    "WELCOME": "Yeni Modül ve Ana Sayfaya Hoşgeldiniz!",
+    "NAME_LABEL": "Ad",
+    "NAME_ERROR": "Ad gereklidir!",
+    "EMAIL_LABEL": "E-posta",
+    "EMAIL_ERROR": "Geçerli bir e-posta gereklidir!",
+    "SUBMIT_BUTTON": "Gönder"
+  },
+  "ABOUT": {
+    "TITLE": "Hakkımızda",
+    "DESCRIPTION": "Bu Hakkımızda sayfasıdır. Bilgilerinizi buraya ekleyebilirsiniz.",
+    "BACK_BUTTON": "Ana Sayfaya Geri Dön"
+  },
+  "NAVBAR": {
+    "HOME": "Ana Sayfa",
+    "ABOUT": "Hakkında",
+    "EXIT": "Çıkış",
+    "LANGUAGE": "Dil"
+  },
+  "form_submitted": "Form hatası!"
+}

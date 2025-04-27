@@ -1,0 +1,19 @@
+<div class="home-container">
+  <h2>{{ 'HOME.WELCOME' | translate }}</h2>
+
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">{{ 'HOME.NAME_LABEL' | translate }}</label>
+      <input type="text" id="name" [(ngModel)]="name" name="name" required/>
+      <div *ngIf="nameError" class="error-message">{{ 'HOME.NAME_ERROR' | translate }}</div>
+    </div>
+
+    <div class="form-group">
+      <label for="email">{{ 'HOME.EMAIL_LABEL' | translate }}</label>
+      <input type="email" id="email" [(ngModel)]="email" name="email" required/>
+      <div *ngIf="emailError" class="error-message">{{ 'HOME.EMAIL_ERROR' | translate }}</div>
+    </div>
+
+    <button type="submit">{{ 'HOME.SUBMIT_BUTTON' | translate }}</button>
+  </form>
+</div>

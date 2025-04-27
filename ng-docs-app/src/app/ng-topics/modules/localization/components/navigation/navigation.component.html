@@ -1,0 +1,136 @@
+<nav class="navbar">
+  <div class="nav-logo">Localization</div>
+  <ul class="nav-links">
+    <li><a routerLink="/localization/home" routerLinkActive="active">Home</a></li>
+    <li><a routerLink="/localization/about" routerLinkActive="active">About</a></li>
+    <li><a routerLink="/layout" routerLinkActive="active">Exit</a></li>
+
+    <!-- Dropdown for language switch -->
+    <li class="dropdown" [class.open]="dropdownOpen">
+      <button class="dropdown-btn" (click)="toggleDropdown($event)">
+        <i class="fa" [ngClass]="currentLang === 'tr' ? 'fa-flag' : 'fa-globe'"></i>
+        {{ currentLang === 'tr' ? 'Türkçe' : 'English' }}
+        <i class="fa fa-chevron-down dropdown-arrow"></i>
+      </button>
+      <div class="dropdown-content" *ngIf="dropdownOpen">
+        <a (click)="changeLanguage('tr')">Türkçe</a>
+        <a (click)="changeLanguage('en')">English</a>
+      </div>
+    </li>
+  </ul>
+</nav>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #334155;
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #f1f5f9;
+  }
+
+  .nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-links li a {
+    text-decoration: none;
+    color: #cbd5e1;
+    font-size: 1rem;
+    font-weight: 500;
+    position: relative;
+    padding: 0.5rem 0.75rem;
+    transition: color 0.3s;
+  }
+
+  .nav-links li a:hover,
+  .nav-links li a.active {
+    color: #38bdf8;
+  }
+
+  .nav-links li a:hover::after,
+  .nav-links li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #38bdf8;
+  }
+
+  /* Dropdown styles */
+  .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+
+  .dropdown-btn {
+    background: transparent;
+    border: 1px solid #f1f5f9; /* Beyaz border eklendi */
+    border-radius: 4px; /* Köşeleri yuvarlak */
+    color: #cbd5e1;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+  }
+
+  .dropdown-btn:hover {
+    color: #38bdf8;
+    border-color: #38bdf8; /* Hover'da border rengi değişsin */
+  }
+
+  .dropdown-arrow {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  .dropdown.open .dropdown-arrow {
+    transform: rotate(180deg); /* Açık durumda ok yukarı baksın */
+  }
+
+  .dropdown-content {
+    position: absolute;
+    right: 0;
+    background-color: #334155;
+    min-width: 120px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    z-index: 1;
+    padding: 0.5rem 0;
+    border: 1px solid #f1f5f9; /* Beyaz border eklendi */
+    margin-top: 0.5rem; /* Butondan biraz uzak dursun */
+  }
+
+  .dropdown-content a {
+    color: #cbd5e1;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    display: block;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-content a:hover {
+    background-color: #475569;
+    color: #38bdf8;
+  }
+</style>

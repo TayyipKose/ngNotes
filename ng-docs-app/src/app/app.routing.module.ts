@@ -39,8 +39,13 @@ const routes: Routes = [
       {path: 'api', component: ApiRequestComponent},
       {path: 'form', component: FormComponent},
       {path: 'interceptor', component: InterceptorsComponent},
-
     ]
+  },
+
+  { //yeni modülüm
+    path: 'localization',
+    loadChildren: () => import('./ng-topics/modules/localization/localization.module').then(m => m.LocalizationModule),
+    canActivate: [AuthGuard]
   },
 
   {path: '**', redirectTo: '/login'}
