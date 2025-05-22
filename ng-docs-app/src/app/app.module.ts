@@ -27,6 +27,8 @@ import {InterceptorsComponent} from "./ng-topics/12-Interceptors/interceptors.co
 import {AuthInterceptor} from "./ng-topics/12-Interceptors/AuthInterceptor";
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {ObservableComponent} from "./ng-topics/15-rxjs/Observable/observable/observable.component";
+import {ObserverComponent} from "./ng-topics/15-rxjs/Observer/observer/observer.component";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -54,6 +56,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApiRequestComponent,
     FormComponent,
     InterceptorsComponent,
+    ObservableComponent,
+    ObserverComponent,
 
     //Directives
     NumberFormatterDirective,

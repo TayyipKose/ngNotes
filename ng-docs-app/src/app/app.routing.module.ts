@@ -15,6 +15,7 @@ import {LocalstorageComponent} from "./ng-topics/9-LocalStorage/localstorage";
 import {ApiRequestComponent} from "./ng-topics/10-ApiRequests/api.component";
 import {FormComponent} from "./ng-topics/11-Form/form/form.component";
 import {InterceptorsComponent} from "./ng-topics/12-Interceptors/interceptors.component";
+import {ObserverComponent} from "./ng-topics/15-rxjs/Observer/observer/observer.component";
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},  // login URL'sine LoginComponent ile eşleştiriyoruz
@@ -39,6 +40,7 @@ const routes: Routes = [
       {path: 'api', component: ApiRequestComponent},
       {path: 'form', component: FormComponent},
       {path: 'interceptor', component: InterceptorsComponent},
+      {path:'observer', component: ObserverComponent,}
     ]
   },
 

@@ -1,3 +1,8 @@
+RxJS, olay ve veri kaynaklarını abone olunabilir(subscriable) ve nesnelere(observable) dönüştürüp, bunlar üzerinde operatörler vasıtasıyla
+dönüşüm/etkiler gerçekleştirebilmesini ve sonucu elde edebilmemizi/tüketebilmemizi sağlayan Javascript ile yazılmış bir reaktif programlama kütüphanesidir.
+
+
+
 1. Observable
 Angular’da HTTP, form, router gibi birçok yapı observable döner.
 Örnek: this.http.get().subscribe(...)

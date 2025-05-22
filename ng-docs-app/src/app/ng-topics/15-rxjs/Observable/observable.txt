@@ -1,0 +1,6 @@
+* Rxjs kütüphanesinde reaktif proğramlama Observable nesnesi üzerine kurulmuştur.
+
+* Süreçte dönüşüme uğratılacak dataların akışını/akış evresini sağlayan nesnedir.
+
+* Yani kısaca oluşturulan veri akışıdır. akış aslında observabledır. yani "rxjs2.png" deki akış aslında bir observabledır.
+

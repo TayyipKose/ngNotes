@@ -1,0 +1,3 @@
+* Observer, Observable'ın yani akışın içindeki dataları elde edebilmemizi sağlayan, elde edebilmek için Observable'a/akışa abone olan fonksiyonlardır.
+
+

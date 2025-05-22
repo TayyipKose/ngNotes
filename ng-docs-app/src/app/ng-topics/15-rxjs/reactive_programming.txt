@@ -1,0 +1,19 @@
+*Günümüzde geliştirilen bir çok SPA uygulaması events(olaylar) üzerine işlevsellik göstermektedir.
+Haliyle bu uygulamarda olay yönetimi oldukça önemli bir hal almaktadır.
+
+*Reaktif programlama ile events ile iligli olayları daha basit, okunaklı ve dinamik geliştirebilmekteyiz.
+
+OOP ile Rxjs FARKI
+
+OOP ile yazılımlar, gerçek hayattaki olguları nesneler ile modelleyerek tasarlamaktadır.
+Rxjs programlamada ise  gerçek hayattaki olaylar baz alınarak tasarım gerçekleştirilmektedir.
+
+
+Bir örnek;
+
+x= y+z denklemini ele alırsak
+
+Prosedürel programlama mantığında hareket edersek, denklemden sonraki süreçte y veya z değişkenlerinden birinin değeri değişirse bu değişiklik x değişkenine yansımayakcatır.
+yani baştaki değeri ile işlem yapıldıktan sonra x hesaplandıktan sonra y ve z değişmesi bir şey ifade etmez.
+
+Reaktif programlamada ise y ve z değişkenleirnin değerş değiştiğinde x değişkeninin değeride bu değişime göre şekillenecektir.
