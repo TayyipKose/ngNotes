@@ -1,0 +1,46 @@
+1. Observable
+Angular’da HTTP, form, router gibi birçok yapı observable döner.
+Örnek: this.http.get().subscribe(...)
+
+2. Observer
+Observable’ı izleyen yapıdır. next, error, complete metodları içerir.
+
+3. Subscription
+Observable’a abone olduğunda oluşur. Manüel kontrol gerekir.
+Gerçek hayat Kullanımına Örnek: Component destroy olunca bellek sızıntısı olmaması için subscription.unsubscribe() gerekir.
+
+4. Subject (ve Türleri)
+Hem observable hem observer’dır.
+Farklı componentler arasında veri paylaşımında, servis–component iletişiminde kullanılır.
+Subject: Sıfırdan başlar, geçmişi yoktur.
+Subject Türleri:
+*BehaviorSubject: İlk değer ister. Son değeri yeni abonelere verir.
+*ReplaySubject: Belirli sayıda önceki değeri yeni abonelere verir.
+*AsyncSubject: Sadece complete olduğunda son değeri yayar.
+Gerçek hayat Kullanımına Örnek:
+Login durumu takibi, header'da kullanıcı adı güncelleme, socket mesajları yayma, tema/language yönetimi.
+
+5. mergeMap()
+Tüm iç observable'ları paralel olarak çalıştırır, hepsinin sonucunu verir.
+Gerçek hayat Kullanımına Örnek:
+Birden fazla bağımsız API çağrısını aynı anda başlatıp tüm sonuçları almak istiyorsan mergeMap çok işe yarar.
+
+6. pipe()
+Operatörleri zincirlemek için kullanılır. Angular’ın observable’lı her yapısında yer alır.
+Örnek: this.http.get().pipe(map(...), filter(...))
+
+7. filter()
+Sadece belirli koşulları sağlayan değerleri geçirir.
+Gerçek hayat: route.params.pipe(filter(params => !!params['id']))
+
+8. switchMap()
+Yeni observable geldiğinde önceki iptal edilir.
+Gerçek hayat Kullanımına Örnek:: Otomatik tamamlama aramalarında her yazıda yeni HTTP isteği atılır, önceki iptal edilir.
+
+9. debounceTime()
+Kullanıcının yazmayı bitirmesini bekler.
+Gerçek hayat Kullanımına Örnek: input alanına her yazışta değil, 500ms sonra arama yapılması.
+
+10. takeUntil()
+Otomatik unsubscribe sağlar. Destroy edilen component’te kullanılır.
+Gerçek hayat Kullanımına Örnek: Memory leak yaşamamak için ngOnDestroy'da takeUntil(this.destroy$) kullanmak.
