@@ -29,6 +29,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {ObservableComponent} from "./ng-topics/15-rxjs/Observable/observable/observable.component";
 import {ObserverComponent} from "./ng-topics/15-rxjs/Observer/observer/observer.component";
+import {SubjectComponent} from "./ng-topics/15-rxjs/Subject/subject/subject.component";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -58,6 +59,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     InterceptorsComponent,
     ObservableComponent,
     ObserverComponent,
+    SubjectComponent,
+
 
     //Directives
     NumberFormatterDirective,
