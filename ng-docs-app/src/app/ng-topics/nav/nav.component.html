@@ -14,9 +14,17 @@
     <li><a routerLink="/layout/api">ApiRequests</a></li>
     <li><a routerLink="/layout/form">Form</a></li>
     <li><a routerLink="/layout/interceptor">Interceptor</a></li>
-    <li><a routerLink="/layout/observer">Observer</a></li>
+    <li class="dropdown">
+      <a routerLink="/layout/observer">Layout ▼</a>
+      <ul class="dropdown-content">
+        <li><a routerLink="/layout/observer">Observer</a></li>
+        <li><a routerLink="/layout/subscription">Subscription</a></li>
+      </ul>
+    </li>
     <li><a routerLink="/localization">Localization</a></li>
   </ul>
+
+
 
   <button class="logout-btn" (click)="logout()">Çıkış Yap</button>
 </nav>

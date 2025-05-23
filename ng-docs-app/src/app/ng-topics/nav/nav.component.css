@@ -40,3 +40,42 @@
 .logo{
   cursor: pointer;
 }
+
+.navbar .nav-links li.dropdown {
+  position: relative;
+}
+
+.navbar .nav-links li.dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%; /* Menü öğesinin hemen altında */
+  left: 0;
+  background-color: #333;
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  min-width: 150px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  z-index: 1000;
+}
+
+.navbar .nav-links li.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.navbar .nav-links li.dropdown .dropdown-content li {
+  margin: 0;
+  padding: 0;
+}
+
+.navbar .nav-links li.dropdown .dropdown-content li a {
+  display: block;
+  padding: 8px 15px;
+  color: white;
+}
+
+.navbar .nav-links li.dropdown .dropdown-content li a:hover {
+  background-color: white;
+  color: black;
+}
+

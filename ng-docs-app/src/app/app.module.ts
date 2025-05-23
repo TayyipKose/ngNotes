@@ -30,6 +30,10 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import {ObservableComponent} from "./ng-topics/15-rxjs/Observable/observable/observable.component";
 import {ObserverComponent} from "./ng-topics/15-rxjs/Observer/observer/observer.component";
 import {SubjectComponent} from "./ng-topics/15-rxjs/Subject/subject/subject.component";
+import {SubscriptionComponent} from "./ng-topics/15-rxjs/Subscription/subscription/subscription.component";
+import {MergeComponent} from "./ng-topics/15-rxjs/mergeMap/merge/merge.component";
+import {PipeChainComponent} from "./ng-topics/15-rxjs/pipe/pipe.component";
+import {FilterComponent} from "./ng-topics/15-rxjs/filter/filter/filter.component";
 
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -57,9 +61,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     ApiRequestComponent,
     FormComponent,
     InterceptorsComponent,
+
+    //rxjs
     ObservableComponent,
     ObserverComponent,
     SubjectComponent,
+    SubscriptionComponent,
+    MergeComponent,
+    PipeChainComponent,
+    FilterComponent,
 
 
     //Directives
