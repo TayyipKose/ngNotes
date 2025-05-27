@@ -1,0 +1,8 @@
+.example-card {
+  transition: filter 0.3s ease;
+}
+
+.example-card:hover {
+  filter: brightness(0.90); /* %15 karartır */
+  cursor: pointer;
+}

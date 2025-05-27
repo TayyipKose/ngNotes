@@ -1,0 +1,19 @@
+<mat-card class="example-card shadow rounded-4 border-0 p-3">
+  <mat-card-header>
+    <mat-card-title class="fw-bold">{{ _card.name }}</mat-card-title>
+    <mat-card-subtitle class="text-muted">{{ _card.title }}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ul class="list-group list-group-flush small">
+      <li class="list-group-item">{{ _card.phone }}</li>
+      <li class="list-group-item">{{ _card.email }}</li>
+      <li class="list-group-item">{{ _card.address }}</li>
+    </ul>
+  </mat-card-content>
+
+  <mat-card-actions align="end">
+    <button class="m-2" mat-flat-button color="primary">Güncelle</button>
+    <button mat-flat-button color="accent">Sil</button>
+  </mat-card-actions>
+</mat-card>

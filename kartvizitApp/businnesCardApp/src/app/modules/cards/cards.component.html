@@ -1,0 +1,19 @@
+<main>
+  <h1 class="page-title">Kartvizitler</h1>
+  <p class="page-description">Bu ekrandan kartvizitlerinizi yönetebilirsiniz</p>
+  <hr>
+</main>
+
+<div class="cards px-4">
+  <div class="row gy-4">
+
+    <div class="col-12 col-md-6 col-lg-4">
+      <!-- yani kartların tutulduğu yerin listesini çağırıyoruz datası ise buranın .ts'indeki cardItem -->
+    <app-cards-item
+    [_card]="cardItem"
+    >
+    </app-cards-item>
+    </div>
+
+  </div>
+</div>
