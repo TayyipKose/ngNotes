@@ -1,0 +1,42 @@
+<div class="card-container d-flex flex-wrap gap-3">
+  <mat-card class="example-card shadow rounded-4 border-0 p-3" *ngFor="let item of _cards">
+    <mat-card-header>
+      <mat-card-title class="fw-bold">{{ item.name }}</mat-card-title>
+      <mat-card-subtitle class="text-muted">{{ item.title }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content>
+      <ul class="list-group list-group-flush small">
+
+        <li class="list-group-item" *ngIf="item.phone">
+          {{ item.phone }}
+        </li>
+
+        <li class="list-group-item">
+          <ng-container *ngIf="item.email; else noEmail">
+            {{ item.email }}
+          </ng-container>
+          <ng-template #noEmail>
+            <small style="color:#701919;">E-mail adresi girilmemiş!</small>
+          </ng-template>
+        </li>
+
+        <li class="list-group-item">
+          <ng-container *ngIf="item.address; else noAdress">
+            {{ item.address }}
+          </ng-container>
+          <ng-template #noAdress>
+            <small style="color:#701919;">Adres girilmemiş!</small>
+          </ng-template>
+        </li>
+
+      </ul>
+    </mat-card-content>
+
+
+    <mat-card-actions align="end">
+      <button class="m-2" mat-flat-button color="primary">Güncelle</button>
+      <button mat-flat-button color="accent">Sil</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

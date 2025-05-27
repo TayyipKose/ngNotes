@@ -5,10 +5,11 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from "./components/home/home.component";
 import {AboutComponent} from "./components/about/about.component";
 import {HeaderComponent} from "./components/header/header.component";
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {CardsModule} from "./modules/cards/cards.module";
 
 
 @NgModule({
@@ -24,9 +25,12 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    CardsModule
   ],
-  providers: [],
+  providers: [
+    {provide: 'apiUrl', useValue: 'https://demo.limantech.com/cards/public/api'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
