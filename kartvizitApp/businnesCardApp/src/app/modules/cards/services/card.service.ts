@@ -1,6 +1,6 @@
 import {Inject, Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {catchError, map, Observable, of, tap} from "rxjs";
+import {catchError, map, Observable, of, tap, throwError} from "rxjs";
 import {ICARD} from "../model/ICARD";
 
 @Injectable({
@@ -25,6 +25,29 @@ getCards(): Observable<ICARD[]> {
   );
 }
 
+  addCard(payload: any): Observable<any> {
+    return this.http.post<any>(this.apiUrl + '/cards', payload).pipe(
+      catchError(error => {
+        return throwError(() => new Error('Kart eklenirken servis hatası oluştu'));
+      })
+    );
+  }
+  updateCard(payload: any, cardID: number): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/cards/${cardID}`, payload).pipe(
+      catchError(error => {
+        console.error('UpdateCard error:', error);
+        return throwError(() => new Error('Kart güncellenirken servis hatası oluştu'));
+      })
+    );
+  }
 
+  deleteCard(cardID: number){
+    return this.http.delete<any>(`${this.apiUrl}/cards/${cardID}`).pipe(
+      catchError(error => {
+        console.error('DeleteCard error:', error);
+        return throwError(() => new Error('Kart silinirken servis hatası oluştu'));
+      })
+    );
+  }
 
 }

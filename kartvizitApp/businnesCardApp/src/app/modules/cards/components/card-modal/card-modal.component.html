@@ -1,8 +1,97 @@
-<h2 mat-dialog-title>Yeni Kartvizit</h2>
+<div class="progress-container" *ngIf="isLoading">
+  <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+</div>
+<br>
+<h2 mat-dialog-title>
+  {{ mode === 'edit' ? 'Kartvizit Güncelleme' : 'Yeni Kartvizit' }}
+</h2>
+
 <mat-dialog-content class="mat-typography">
 
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <!-- Ad Soyad -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Ad Soyad</label>
+      <input
+        type="text"
+        id="name"
+        class="form-control"
+        formControlName="name"
+        [ngClass]="{ 'is-invalid': isFieldInvalid('name') }" />
+      <div *ngIf="isFieldInvalid('name')" class="invalid-feedback">
+        {{ getErrorMessage('name') }}
+      </div>
+    </div>
+
+    <!-- Title -->
+    <div class="mb-3">
+      <label for="title" class="form-label">Unvan</label>
+      <input
+        type="text"
+        id="title"
+        class="form-control"
+        formControlName="title"
+        [ngClass]="{ 'is-invalid': isFieldInvalid('title') }" />
+      <div *ngIf="isFieldInvalid('title')" class="invalid-feedback">
+        {{ getErrorMessage('title') }}
+      </div>
+    </div>
+
+    <!-- E-posta -->
+    <div class="mb-3">
+      <label for="email" class="form-label">E-posta</label>
+      <input
+        type="email"
+        id="email"
+        class="form-control"
+        formControlName="email"
+        [ngClass]="{ 'is-invalid': isFieldInvalid('email') }" />
+      <div *ngIf="isFieldInvalid('email')" class="invalid-feedback">
+        {{ getErrorMessage('email') }}
+      </div>
+    </div>
+
+    <!-- Telefon -->
+    <div class="mb-3">
+      <label for="phone" class="form-label">Telefon</label>
+      <input
+        type="text"
+        id="phone"
+        maxlength="11"
+        class="form-control"
+        formControlName="phone"
+        [ngClass]="{ 'is-invalid': isFieldInvalid('phone') }" />
+      <div *ngIf="isFieldInvalid('phone')" class="invalid-feedback">
+        {{ getErrorMessage('phone') }}
+      </div>
+    </div>
+
+    <!-- Adres -->
+    <div class="mb-3">
+      <label for="address" class="form-label">Adres</label>
+      <input
+        type="text"
+        id="address"
+        class="form-control"
+        formControlName="address"
+        [ngClass]="{ 'is-invalid': isFieldInvalid('address') }" />
+      <div *ngIf="isFieldInvalid('address')" class="invalid-feedback">
+        {{ getErrorMessage('address') }}
+      </div>
+    </div>
+  </form>
+
 </mat-dialog-content>
-<mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Vazgeç</button>
-  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Ekle</button>
+
+<mat-dialog-actions align="end" style="display: flex; gap: 10px;">
+  <button mat-stroked-button color="warn" mat-dialog-close>
+    Vazgeç
+  </button>
+
+  <button mat-flat-button color="accent" (click)="onSubmit()" cdkFocusInitial>
+    {{ mode === 'edit' ? 'Güncelle' : 'Ekle' }}
+  </button>
 </mat-dialog-actions>
+
+

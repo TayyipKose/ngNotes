@@ -10,7 +10,8 @@ import {ICARD} from "./model/ICARD";
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
-  cardsList:ICARD[] = [];
+  cardsList: ICARD[] = [];
+
   constructor(
     private dialog: MatDialog,
     private cardService: CardService,
@@ -23,9 +24,15 @@ export class CardsComponent implements OnInit {
   }
 
   openDialog(event: any) {
-    this.dialog.open(CardModalComponent, {
+    const dialog = this.dialog.open(CardModalComponent, {
       width: '500px',
     });
+
+    dialog.afterClosed().subscribe(res => {
+      if (res) {
+        this.getCards();
+      }
+    })
   }
 
   getCards() {

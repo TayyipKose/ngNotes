@@ -1,5 +1,5 @@
 import {InjectionToken, NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgIf} from '@angular/common';
 import {CardsRoutingModule} from './cards-routing.module';
 import {CardsComponent} from './cards.component';
 import {MatCardModule} from '@angular/material/card';
@@ -10,6 +10,12 @@ import {MatIconModule} from '@angular/material/icon';
 import {CardModalComponent} from "./components/card-modal/card-modal.component";
 import {HttpClientModule} from "@angular/common/http";
 import {CardService} from "./services/card.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {MatProgressBarModule} from "@angular/material/progress-bar";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+
+
 
 export const API_URL = new InjectionToken<string>('apiUrl');
 
@@ -26,7 +32,15 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     MatButtonModule,
     MatDialogModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    FormsModule,
+    NgIf,
+    ReactiveFormsModule,
+    MatProgressBarModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
   ],
   providers: [CardService]
 })

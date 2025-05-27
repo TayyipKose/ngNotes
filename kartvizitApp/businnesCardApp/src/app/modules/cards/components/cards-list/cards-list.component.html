@@ -1,7 +1,7 @@
 <div class="card-container d-flex flex-wrap gap-3">
-  <mat-card class="example-card shadow rounded-4 border-0 p-3" *ngFor="let item of _cards">
-    <mat-card-header>
-      <mat-card-title class="fw-bold">{{ item.name }}</mat-card-title>
+  <mat-card class="example-card shadow rounded-4 border-0 p-3" *ngFor="let item of pagedCards">
+    <mat-card-header (click)="opencardDetail(item)">
+      <mat-card-title class="fw-bold">{{ item.name || "-" }}</mat-card-title>
       <mat-card-subtitle class="text-muted">{{ item.title }}</mat-card-subtitle>
     </mat-card-header>
 
@@ -35,8 +35,25 @@
 
 
     <mat-card-actions align="end">
-      <button class="m-2" mat-flat-button color="primary">Güncelle</button>
-      <button mat-flat-button color="accent">Sil</button>
+      <button class="m-2" mat-flat-button color="primary" (click)="opencardDetail(item)">Güncelle</button>
+      <button mat-flat-button color="accent" (click)="deleteCard(item)">Sil</button>
     </mat-card-actions>
   </mat-card>
 </div>
+
+
+<!-- Pagination Kontrolleri -->
+<nav aria-label="Sayfa Navigasyonu" class="mt-5 d-flex justify-content-center align-items-center gap-2">
+  <button mat-stroked-button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
+
+  <button
+    mat-stroked-button
+    *ngFor="let page of [].constructor(totalPages); let i = index"
+    [color]="currentPage === i + 1 ? 'primary' : undefined"
+    (click)="goToPage(i + 1)">
+    {{ i + 1 }}
+  </button>
+
+  <button mat-stroked-button (click)="nextPage()" [disabled]="currentPage === totalPages">Sonraki</button>
+</nav>
+
