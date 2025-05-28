@@ -1,0 +1,10 @@
+<div class="input-group search-box" style="max-width: 180px;">
+  <input
+    type="text"
+    class="form-control"
+    placeholder="Kartvizit ara..."
+    [formControl]="formControl"
+    #searchText
+    (keyup)="onSearch(searchText.value)"
+  />
+</div>

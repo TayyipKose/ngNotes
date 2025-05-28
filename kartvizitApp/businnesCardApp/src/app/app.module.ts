@@ -10,6 +10,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {CardsModule} from "./modules/cards/cards.module";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 
 @NgModule({
@@ -26,7 +28,9 @@ import {CardsModule} from "./modules/cards/cards.module";
     MatToolbarModule,
     MatIconModule,
     MatButtonModule,
-    CardsModule
+    CardsModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [
     {provide: 'apiUrl', useValue: 'https://demo.limantech.com/cards/public/api'},

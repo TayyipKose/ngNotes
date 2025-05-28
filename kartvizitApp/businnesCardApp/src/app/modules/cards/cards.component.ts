@@ -3,6 +3,8 @@ import {MatDialog} from "@angular/material/dialog";
 import {CardModalComponent} from "./components/card-modal/card-modal.component";
 import {CardService} from "./services/card.service";
 import {ICARD} from "./model/ICARD";
+import {FormControl, Validators} from "@angular/forms";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-cards',
@@ -10,7 +12,11 @@ import {ICARD} from "./model/ICARD";
   styleUrls: ['./cards.component.scss']
 })
 export class CardsComponent implements OnInit {
-  cardsList: ICARD[] = [];
+  searchFormControl = new FormControl('', [
+    Validators.required
+  ])
+  filteredCards : ICARD[] = [];
+  allCards: ICARD[] = [];
 
   constructor(
     private dialog: MatDialog,
@@ -20,7 +26,10 @@ export class CardsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.getCards();
+    this.cardService.getCards().subscribe(cards => {
+      this.allCards = cards;
+      this.filteredCards = [...cards];
+    });
   }
 
   openDialog(event: any) {
@@ -38,7 +47,7 @@ export class CardsComponent implements OnInit {
   getCards() {
     this.cardService.getCards().subscribe({
       next: (res) => {
-        this.cardsList = res;
+        this.filteredCards = res;
       },
       error: (err) => {
         console.error('Kartlar getirilirken hata oluştu:', err);
@@ -48,4 +57,14 @@ export class CardsComponent implements OnInit {
     });
   }
 
+  cardsComponentFiltered(searchText: string) {
+    if (!searchText) {
+      this.filteredCards = [...this.allCards];
+    } else {
+      this.filteredCards = this.allCards.filter(card =>
+        card.name.toLowerCase().includes(searchText) ||
+        card.title.toLowerCase().includes(searchText)
+      );
+    }
+  }
 }

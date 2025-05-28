@@ -1,7 +1,9 @@
 <main>
   <h1 class="page-title">Kartvizitler</h1>
   <p class="page-description">Bu ekrandan kartvizitlerinizi yönetebilirsiniz</p>
-  <div class="col-12 col-md-4 ms-auto text-end">
+  <div class="col-12 col-md-4 ms-auto d-flex justify-content-end align-items-center gap-2">
+    <!-- aslinda cardlari cards.componentten cardList componente yolluyoruz, o yüzden direkt cards içinde filtreleme işlemini burada yapıyoruz!!  -->
+    <app-card-search (cardSearchComponentSearchText)="cardsComponentFiltered($event)"></app-card-search>
     <button mat-flat-button color="warn" (click)="openDialog($event)">
       <mat-icon class="me-2">add</mat-icon>
       Kartvizit Ekle
@@ -9,15 +11,15 @@
   </div>
   <hr>
 
-
   <div class="cards px-4">
     <div class="row gy-4">
       <div class="col-12">
         <app-cards-list
-          [_cards]="cardsList"
+          [_cards]="filteredCards"
         >
         </app-cards-list>
       </div>
     </div>
   </div>
 </main>
+

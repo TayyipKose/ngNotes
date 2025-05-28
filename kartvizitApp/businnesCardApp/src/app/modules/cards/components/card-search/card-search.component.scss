@@ -1,0 +1,12 @@
+:host {
+  max-width: 180px;
+  display: block; /* Blok element yap, altına geçsin */
+}
+
+input.form-control {
+  padding: 0.4rem 0.6rem;
+  height: 36px;
+  font-size: 15px;
+  transition: border-color 0.3s ease;
+}
+

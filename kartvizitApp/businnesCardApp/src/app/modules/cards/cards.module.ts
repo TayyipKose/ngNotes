@@ -14,6 +14,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatProgressBarModule} from "@angular/material/progress-bar";
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import {MatProgressSpinnerModule} from "@angular/material/progress-spinner";
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import {CardSearchComponent} from "./components/card-search/card-search.component";
 
 
 
@@ -24,6 +27,7 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     CardsComponent,
     CardsListComponent,
     CardModalComponent,
+    CardSearchComponent,
   ],
   imports: [
     CommonModule,
@@ -40,7 +44,9 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     ReactiveFormsModule,
     MatProgressBarModule,
     MatSnackBarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [CardService]
 })

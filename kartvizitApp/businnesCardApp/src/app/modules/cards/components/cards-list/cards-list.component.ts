@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {CardService} from "../../services/card.service";
 import {CardModalComponent} from "../card-modal/card-modal.component";
@@ -12,6 +12,7 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 })
 export class CardsListComponent {
   @Input() _cards: any;
+  @Output() cardListComponentEmitGetCards = new EventEmitter<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -33,7 +34,7 @@ export class CardsListComponent {
     });
     dialog.afterClosed().subscribe(res => {
       if (res) {
-        this.cardsComponent.getCards();
+        this.cardListComponentEmitGetCards.emit();
       }
     })
   }
@@ -59,7 +60,6 @@ export class CardsListComponent {
   }
 
 
-  
 //pagination fonksiyonları
   pageSize = 2; //
   currentPage = 1;
