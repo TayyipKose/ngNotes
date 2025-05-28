@@ -16,7 +16,7 @@ export class CardService {
 getCards(): Observable<ICARD[]> {
   return this.http.get<ICARD[]>(this.apiUrl + '/cards').pipe(
     tap(res => console.log('Kartlar geldi:', res)),
-    map(res => res.filter(res => res.phone)),  // address varsa filtrele
+    map(res => res.filter(res => res.phone)),
 
     catchError(err => {
       console.error('Kartları getirirken hata:', err);

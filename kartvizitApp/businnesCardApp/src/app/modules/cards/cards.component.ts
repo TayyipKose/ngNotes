@@ -26,9 +26,9 @@ export class CardsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.cardService.getCards().subscribe(cards => {
-      this.allCards = cards;
-      this.filteredCards = [...cards];
+    this.cardService.getCards().subscribe(response => {
+      this.allCards = response;
+      this.filteredCards = [...response];
     });
   }
 
@@ -47,7 +47,7 @@ export class CardsComponent implements OnInit {
   getCards() {
     this.cardService.getCards().subscribe({
       next: (res) => {
-        this.filteredCards = res;
+        this.filteredCards = res.sort((a, b) => a.id - b.id); //k=>b id sort
       },
       error: (err) => {
         console.error('Kartlar getirilirken hata oluştu:', err);
