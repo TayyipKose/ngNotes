@@ -1,0 +1,23 @@
+<div class="container" style="margin-top: 5%">
+  <div class="row">
+    <!-- sol taraf oyun kısmı-->
+    <div class="col-md-8">
+      <div class="row gx-2 gy-2">
+        <div class="col-4" *ngFor="let item of buttons let index = index">
+          <button class="btn btn-primary button" (click)="setMark(index)">{{buttons[index]}}</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- sağ taraf -->
+    <div class="col-md-4">
+      <div class="mx-2">
+        <h2 *ngIf="result == '' "  class="alert alert-warning">Sıradaki: {{next}}</h2>
+        <h2 *ngIf="result != '' " class="alert alert-success">Sonuç: {{result}}</h2>
+        <div style="margin-top: 615px">
+          <button class="btn btn-danger w-100" style="height: 80px; font-size: 35px;" (click)="resetGame()">Yeni Oyun</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
