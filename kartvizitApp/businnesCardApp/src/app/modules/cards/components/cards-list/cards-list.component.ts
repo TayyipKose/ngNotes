@@ -89,6 +89,8 @@ export class CardsListComponent {
 
   /*
     Sayfalama Mantığı (Pagination) Nedir?
+
+    buradak iki kritik pageCards getteri ve .slice özelliği kesme yapıyoruz kestiğimizi pageCards ile veriyoruz ngForda pageCards dönütoruz
     -------------------------------------
     Diyelim elimizde 10 tane kart (veri) var ama hepsini aynı anda göstermek istemiyoruz.
     Mesela sayfa başına sadece 2 tane kart gösterelim.

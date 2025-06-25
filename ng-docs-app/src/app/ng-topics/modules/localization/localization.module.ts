@@ -11,22 +11,25 @@ import {HttpClientModule} from "@angular/common/http";
 
 
 @NgModule({
-  declarations: [
-    LocazitionComponent,
-    HomeComponent,
-    AboutComponent,
-    NavigationComponent,
+    declarations: [
+        LocazitionComponent,
+        HomeComponent,
+        AboutComponent,
+        NavigationComponent,
 
-  ],
-  imports: [
-    CommonModule,
-    LocalizationRoutingModule,
-    FormsModule,
-    HttpClientModule,
+    ],
+    exports: [
+        NavigationComponent
+    ],
+    imports: [
+        CommonModule,
+        LocalizationRoutingModule,
+        FormsModule,
+        HttpClientModule,
 
-    //pipes
-    TranslatePipe
-  ]
+        //pipes
+        TranslatePipe
+    ]
 })
 export class LocalizationModule {
 }

@@ -1,0 +1,17 @@
+.container {
+  margin-left: 160px;
+}
+img {
+  cursor: pointer;
+}
+
+.mt-5 {
+  display: flex;
+justify-content: center;
+  align-items: center;
+}
+button.active {
+  background-color: #1976d2;
+  color: white;
+  border: 1px solid #1976d2;
+}
