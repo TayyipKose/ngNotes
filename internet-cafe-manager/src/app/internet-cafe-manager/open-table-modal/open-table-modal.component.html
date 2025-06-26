@@ -1,1 +1,33 @@
-<p>open-table-modal works!</p>
+<h2 mat-dialog-title class="dialog-title">Masa Aç</h2>
+
+<form [formGroup]="tableForm" class="modal-form">
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Kaç Saat Açılacak?</mat-label>
+    <input matInput
+           type="text"
+           formControlName="hours"
+           (blur)="onHoursBlur()"
+           (input)="onHoursInput($event)"
+           placeholder="Yalnızca 0,5 ve katları" />
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Açıklama (Opsiyonel)</mat-label>
+    <textarea matInput
+              formControlName="description"
+              rows="3"
+              maxlength="50"
+              placeholder="En fazla 50 karakter"></textarea>
+    <mat-hint align="end">{{ tableForm.get('description')?.value?.length || 0 }}/50</mat-hint>
+  </mat-form-field>
+
+
+  <div class="actions mb-3">
+    <button mat-stroked-button color="warn" (click)="cancel()">İptal</button>
+    <button mat-raised-button color="primary"
+            [disabled]="!tableForm.valid"
+            (click)="openTable()">
+      Onayla
+    </button>
+  </div>
+</form>

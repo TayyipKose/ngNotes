@@ -1,0 +1,12 @@
+ul.list-group {
+  font-size: 0.9rem;
+}
+
+li.list-group-item {
+  border-left: 4px solid #dc3545;
+  transition: background 0.3s ease;
+}
+
+li.list-group-item:hover {
+  background-color: #f8d7da;
+}

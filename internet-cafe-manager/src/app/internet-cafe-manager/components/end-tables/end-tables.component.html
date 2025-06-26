@@ -1,0 +1,19 @@
+<div *ngIf="filteredList.length > 0">
+  <h3 class="justify-content-center align-content-center"> Süresi az kalan masalar</h3>
+  <ul class="list-group">
+    <li
+      class="list-group-item d-flex justify-content-between align-items-center"
+      *ngFor="let masa of filteredList"
+      style="padding-left: 1rem; padding-right: 1rem;">
+      <span style="flex-grow: 1;">
+        <strong>Masa:</strong> {{ masa.id || 'N/A' }}
+      </span>
+      <span class="badge bg-danger rounded-pill">
+        {{ kalanDakikaHesapla(masa.bitis) }} dk kaldı
+      </span>
+    </li>
+  </ul>
+</div>
+<div *ngIf="filteredList.length === 0" class="text-muted p-2 text-center">
+  Şu anda süresi bitmek üzere olan masa yok.
+</div>

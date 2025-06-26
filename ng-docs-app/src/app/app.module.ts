@@ -94,10 +94,11 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
     }),
   ],
-  exports: [
-    NumberFormatterDirective,
-    DisableCopyPasteDirective,
-  ],
+    exports: [
+        NumberFormatterDirective,
+        DisableCopyPasteDirective,
+        NavComponent,
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}, //interceptorlarımızı buraya ekliyoruz
   ],

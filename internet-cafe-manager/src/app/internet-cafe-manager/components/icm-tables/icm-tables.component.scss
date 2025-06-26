@@ -1,17 +1,41 @@
 .container {
   margin-left: 160px;
 }
+
 img {
   cursor: pointer;
 }
 
 .mt-5 {
   display: flex;
-justify-content: center;
+  justify-content: center;
   align-items: center;
 }
+
 button.active {
   background-color: #1976d2;
   color: white;
   border: 1px solid #1976d2;
+}
+
+.menu-item:hover {
+  background-color: #e9ecef;
+  border-radius: 3px;
+}
+.tables {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  }
 }

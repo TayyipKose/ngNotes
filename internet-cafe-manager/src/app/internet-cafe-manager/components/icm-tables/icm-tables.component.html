@@ -1,87 +1,85 @@
-<div class="container">
+<div class="container-fluid p-0">
+  <app-nav></app-nav>
+
+<!-- İÇERİK -->
+<div class="container mt-3">
   <div class="row">
-    <div class="col-md-9 col-sm-12">
-      <app-header-menu></app-header-menu>
-    </div>
-    <div class="col-md-3 col-sm-12">
-      <app-lock
-        (timeChanged)="onTimeChanged($event)"
-      ></app-lock>
-    </div>
-  </div>
-  <hr>
-  <div class="row g-4 mt-4">
-    <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let masa of pageMasalar">
-      <div
-        class="card p-3 h-100 shadow-sm"
-        [ngStyle]="{
-          'font-size': '0.9rem',
-          'border': masa.dolu ? '3px solid #198754' : '2px solid #dc3545',
-          'borderRadius': '12px'
-        }"
-        (click)="selectedTable(masa)"
-      >
-        <div class="d-flex flex-column h-100 justify-content-between">
-          <!-- Üst Bilgiler -->
-          <div class="d-flex">
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
-              alt="PC Icon"
-              class="me-3"
-              [ngStyle]="{
-                width: '55px',
-                height: '55px',
-                objectFit: 'contain',
-                opacity: masa.dolu ? '1' : '0.4'
-              }"
-            />
-            <div class="flex-grow-1">
-              <div class="fw-semibold mb-1 fs-6">Masa #{{ masa.id }}</div>
-
-              <ng-container *ngIf="masa.dolu; else bosMasa">
-                <div class="mb-1">Başlangıç: <span class="text-secondary">{{ masa.baslangic | date: 'HH:mm' }}</span></div>
-                <div class="mb-1">Bitiş: <span class="text-secondary">{{ masa.bitis | date: 'HH:mm' }}</span></div>
-                <div class="text-muted small">{{ masa.detay }}</div>
-              </ng-container>
-
-              <ng-template #bosMasa>
-                <div class="text-muted small">Masa boş</div>
-              </ng-template>
-            </div>
-          </div>
-
-          <!-- Butonlar -->
-          <div class="d-flex justify-content-between align-items-center mt-3">
-            <ng-container *ngIf="masa.dolu; else bosButon">
-              <div class="d-flex gap-2">
-                <button (click)="closeTab(masa)" class="btn btn-outline-danger btn-sm px-2 py-0" title="Masayı Kapat">
-                  <small>✕</small>
-                </button>
-                <button class="btn btn-outline-primary btn-sm px-2 py-0" title="Süreyi Uzat +1 Saat">
-                  <small>＋1h</small>
-                </button>
+    <!-- MASALAR -->
+    <div class="col-md-9 col-sm-12 tables">
+      <div class="row g-4 mt-2">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let masa of pageMasalar">
+          <div
+            class="card p-3 h-100 shadow-sm"
+            [ngStyle]="{
+                'font-size': '0.9rem',
+                'border': masa.dolu ? '3px solid #198754' : '2px solid #dc3545',
+                'borderRadius': '12px'
+              }">
+            <div class="d-flex flex-column h-100 justify-content-between">
+              <!-- Üst Bilgiler -->
+              <div class="d-flex">
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/149/149071.png"
+                  alt="PC Icon"
+                  class="me-3"
+                  [ngStyle]="{
+                      width: '55px',
+                      height: '55px',
+                      objectFit: 'contain',
+                      opacity: masa.dolu ? '1' : '0.4'
+                    }"/>
+                <div class="flex-grow-1">
+                  <div class="fw-semibold mb-1 fs-6">Masa #{{ masa.id }}</div>
+                  <ng-container *ngIf="masa.dolu; else bosMasa">
+                    <div class="mb-1">Başlangıç: <span
+                      class="text-secondary">{{ masa.baslangic | date: 'HH:mm' }}</span></div>
+                    <div class="mb-1">Bitiş: <span class="text-secondary">{{ masa.bitis | date: 'HH:mm' }}</span></div>
+                    <div class="text-muted small">{{ masa.detay }}</div>
+                  </ng-container>
+                  <ng-template #bosMasa>
+                    <div class="text-muted small">Masa boş</div>
+                  </ng-template>
+                </div>
               </div>
-            </ng-container>
 
-            <ng-template #bosButon>
-              <button class="btn btn-outline-success btn-sm px-2 py-0" title="Masayı Aç">
-                <small>➕ Aç</small>
-              </button>
-            </ng-template>
-
-            <div class="fw-bold text-end ms-auto" style="font-size: 0.85rem;">
-              {{ masa.dolu ? ('₺' + masa.ucret) : '₺0' }}
+              <!-- Butonlar -->
+              <div class="d-flex justify-content-between align-items-center mt-3">
+                <ng-container *ngIf="masa.dolu; else bosButon">
+                  <div class="d-flex gap-2">
+                    <button (click)="closeTab(masa)" class="btn btn-outline-danger btn-sm px-2 py-0"
+                            title="Masayı Kapat">
+                      <small>✕</small>
+                    </button>
+                    <button class="btn btn-outline-primary btn-sm px-2 py-0" title="Süreyi Uzat +1 Saat">
+                      <small (click)="sureUzat(masa)">＋1h</small>
+                    </button>
+                  </div>
+                </ng-container>
+                <ng-template #bosButon>
+                  <button (click)="openTable(masa)" class="btn btn-outline-success btn-sm px-2 py-0" title="Masayı Aç">
+                    <small>➕ Aç</small>
+                  </button>
+                </ng-template>
+                <div class="fw-bold text-end ms-auto" style="font-size: 0.85rem;">
+                  {{ masa.dolu ? ('₺' + masa.ucret) : '₺0' }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- BİTEN MASALAR -->
+    <div class="mt-5 col-md-3 col-sm-12" style="border: 1px solid #ccc; border-radius: 8px;">
+      <app-end-tables [endTablesList]="bitmesine45DakikaKalanMasalar"></app-end-tables>
+    </div>
   </div>
 
+  <!-- Sayfalama -->
   <div class="mt-5">
     <nav aria-label="Sayfa Navigasyonu" class="mt-5 d-flex justify-content-center align-items-center gap-2">
       <button mat-stroked-button (click)="prevPage()" [disabled]="currentPage === 1">Önceki</button>
-
       <button
         mat-stroked-button
         *ngFor="let page of [].constructor(totalPages); let i = index"
@@ -89,9 +87,8 @@
         [ngClass]="{ 'active': currentPage === (i + 1) }">
         {{ i + 1 }}
       </button>
-
       <button mat-stroked-button (click)="nextPage()" [disabled]="currentPage === totalPages">Sonraki</button>
     </nav>
   </div>
-
+</div>
 </div>

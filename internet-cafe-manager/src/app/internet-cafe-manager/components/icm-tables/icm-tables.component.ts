@@ -1,4 +1,7 @@
-import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit, ViewChild} from '@angular/core';
+import {MatDialog} from "@angular/material/dialog";
+import {OpenTableModalComponent} from "../../open-table-modal/open-table-modal.component";
+import {EndTablesComponent} from "../end-tables/end-tables.component";
 
 @Component({
   selector: 'app-icm-tables',
@@ -6,12 +9,13 @@ import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
   styleUrls: ['./icm-tables.component.scss']
 })
 export class IcmTablesComponent implements OnInit {
+  @ViewChild(EndTablesComponent) endTablesComponent!: EndTablesComponent; // app-end-tables referansı
   masalar: any = [
     {
       id: 1,
       dolu: true,
-      baslangic: new Date('2025-06-25T08:00:00'),
-      bitis: new Date('2025-06-25T11:30:00'),
+      baslangic: new Date(2025, 5, 25, 8, 0, 0), // 25 Haziran 2025 08:00:00
+      bitis: new Date(2025, 5, 25, 10, 49, 0), // 10:46
       detay: 'Oyun modu - VR hazır',
       ucret: 175
     },
@@ -24,7 +28,7 @@ export class IcmTablesComponent implements OnInit {
       id: 3,
       dolu: true,
       baslangic: new Date('2025-06-25T09:15:00'),
-      bitis: new Date('2025-06-25T11:15:00'),
+      bitis: new Date('2025-06-25T10:35:00'),
       detay: 'Sadece internet',
       ucret: 50
     },
@@ -106,32 +110,37 @@ export class IcmTablesComponent implements OnInit {
     }
   ];
   currentClock: Date = new Date();
+  hoursPrice = 50;
 
-  onTimeChanged(newTime: Date) {
-    this.currentClock = newTime;
+  constructor(
+    private cd: ChangeDetectorRef,
+    private dialog: MatDialog
+  ) {
   }
-
-  constructor(private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.currentClock = new Date();
-    this.mainTableOff();
+    this.otomatikMasaKapatma();
 
     setInterval(() => {
       this.currentClock = new Date();
-      this.mainTableOff();
-    }, 1000);
+      this.otomatikMasaKapatma();
+    }, 50);
     this.cd.detectChanges();
   }
 
-
-  selectedTable(event: any) {
-
+  get bitmesine45DakikaKalanMasalar(): any[] {
+    const now = this.currentClock.getTime();
+    return this.masalar
+      .filter((masa: any) => masa.dolu && masa.bitis && (new Date(masa.bitis).getTime() - now) > 0 && (new Date(masa.bitis).getTime() - now) < 45 * 60 * 1000)
+      .sort((a: any, b: any) => (new Date(a.bitis).getTime() - now) - (new Date(b.bitis).getTime() - now))
+      .slice(0, 10);
   }
 
-  mainTableOff() {
-    const now = this.currentClock;
 
+
+  otomatikMasaKapatma() {
+    const now = this.currentClock;
     this.masalar.forEach((masa: any) => {
       if (masa.dolu && masa.bitis && masa.bitis < now) {
         masa.dolu = false;
@@ -142,37 +151,76 @@ export class IcmTablesComponent implements OnInit {
       }
     });
     this.cd.detectChanges();
+    this.endTablesComponent?.updateList(); // Masa kapandığında app-end-tables listesini güncelle
+  }
+
+  openTable(masa: any) {
+    const dialogRef = this.dialog.open(OpenTableModalComponent, {
+      width: '500px',
+      disableClose: true,
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        const rawHours = result.hours?.toString().replace(',', '.');
+        const hours = parseFloat(rawHours);
+
+        if (isNaN(hours) || hours <= 0) {
+          return;
+        }
+
+        const now = new Date();
+        masa.dolu = true;
+        masa.baslangic = now;
+
+        const bitis = new Date(now.getTime() + hours * 60 * 60 * 1000);
+        masa.bitis = bitis;
+
+        masa.detay = result.description || '';
+        masa.ucret = hours * this.hoursPrice;
+        this.currentClock = new Date();
+
+        this.cd.detectChanges();
+        this.endTablesComponent.updateList(); // Yeni masa açıldığında app-end-tables listesini güncelle
+      }
+    });
+  }
+
+  sureUzat(masa: any) {
+    if (!masa.dolu || !masa.bitis) {
+      return;
+    }
+    masa.bitis = new Date(masa.bitis.getTime() + 1 * 60 * 60 * 1000);
+    masa.ucret = masa.ucret + 50;
+    this.cd.detectChanges();
+    this.endTablesComponent.updateList(); // Süre uzatıldığında app-end-tables listesini güncelle
   }
 
   closeTab(masa: any) {
-    masa.baslangıc = null,
-      masa.bitis = null,
-      masa.detay = '',
-      masa.ucret = 0,
-      masa.dolu = false
+    masa.baslangic = null;
+    masa.bitis = null;
+    masa.detay = '';
+    masa.ucret = 0;
+    masa.dolu = false;
+    this.cd.detectChanges();
+    this.endTablesComponent.updateList(); // Masa kapandığında app-end-tables listesini güncelle
   }
 
-//pagination fonksiyonları
-  pageSize = 12; //
+  // Pagination fonksiyonları aynı kalıyor
+  pageSize = 12;
   currentPage = 1;
 
-  get totalPages()
-    :
-    number {
+  get totalPages(): number {
     return Math.ceil(this.masalar.length / this.pageSize);
   }
 
-  get pageMasalar()
-    :
-    any[] {
+  get pageMasalar(): any[] {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     return this.masalar.slice(startIndex, startIndex + this.pageSize);
   }
 
-  goToPage(page
-             :
-             number
-  ) {
+  goToPage(page: number) {
     if (page < 1 || page > this.totalPages) {
       return;
     }
