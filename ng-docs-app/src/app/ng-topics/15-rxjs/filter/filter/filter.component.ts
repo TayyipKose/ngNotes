@@ -78,9 +78,9 @@ export class FilterComponent implements OnInit, OnDestroy {
  * 🔸 Bellek sızıntılarını önler; örneğin, HTTP istekleri veya zamanlayıcılar çalışmaya devam etmez.
  *
  * Bu örnekte:
- *    - products$: API’den ürün listesini çeker.
- *    - filter(products => Array.isArray(products)): Gelen verinin dizi olduğundan emin olur.
- *    - products.filter(product => product.price > 100): Fiyatı 100’den büyük ürünleri seçer.
+ *    - products-modules$: API’den ürün listesini çeker.
+ *    - filter(products-modules => Array.isArray(products-modules)): Gelen verinin dizi olduğundan emin olur.
+ *    - products-modules.filter(product => product.price > 100): Fiyatı 100’den büyük ürünleri seçer.
  *    - map ile isimler büyük harfe çevrilir.
  *    - takeUntil(this.destroy$): Komponent yok edildiğinde abonelik iptal edilir.
  *

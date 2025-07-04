@@ -1,0 +1,43 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.login-box {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+  opacity: 0.95;
+}
+
+.link-white {
+  color: white;
+}
+span {
+  cursor: pointer;
+}
+button:hover {
+  background: white;
+  color: black;
+}
+.overlay-spinner {
+  position: fixed;/* tüm ekranı kaplar */
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(4px);/* blur efekti */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}

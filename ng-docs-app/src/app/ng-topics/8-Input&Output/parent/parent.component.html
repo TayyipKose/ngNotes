@@ -4,7 +4,7 @@
 <app-child
   [products]="products"
   (productSelected)="onProductSelected($event)">
-  <!-- products]="products"=> ile  Input binding ile ürünler Child'a aktarılır -->
+  <!-- products-modules]="products-modules"=> ile  Input binding ile ürünler Child'a aktarılır -->
   <!-- (productSelected)="onProductSelected($event)"=> ile Output event ile seçilen ürün parent'a gönderilir -->
 </app-child>
 
@@ -19,7 +19,7 @@
 
 <h3 *ngIf="!selectedProduct">Henüz bir ürün seçmediniz.</h3>
 <!-- Akışın Kısa Mantıgı
-Parent Component'teki products listesi, Input binding ile Child Component'e aktarılır.
+Parent Component'teki products-modules listesi, Input binding ile Child Component'e aktarılır.
 Child, her ürüne tıklandığında Output kullanarak seçilen ürünü Parent'a gönderir.
 Parent, bu veriyi onProductSelected() metodu ile alır ve ekranda gösterir.
 Eğer ürün seçilmemişse, "Henüz bir ürün seçmediniz" mesajı görünür.
